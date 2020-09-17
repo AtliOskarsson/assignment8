@@ -1,44 +1,58 @@
-def tile_directions():
-    input_direction = input("Direction: ")
-    if input_direction == 'N' or input_direction == 'n':
+
+#1.Create a function for the coordinates which uses the user input
+#1a) Add to the value of x or y depending on the user input
+#2. Create another function to print where user can move 
+#3. Have this inside of a while loop
+#4. Stop running when the user is at these coordinates (3,1) and print out "victory"
+
+
+
+def tile_directions(coordinates):
+    x = int(coordinates[1])
+    y = int(coordinates[3])
+    input_direction = input("Direction: ").upper()
+    if input_direction == 'N' and y < 3 and coordinates != "(2,2)":
         y += 1
-    elif input_direction == 'E' or input_direction == 'e':
+    elif input_direction == 'E' and x < 3 and coordinates != "(2,2)" and coordinates != "(2,1)" and coordinates != "(1,1)":
         x += 1
-    elif input_direction == 'S' or input_direction == 's':
+    elif input_direction == 'S' and y > 1 and coordinates != "(2,3)":
         y -= 1
-    elif input_direction == 'W' or input_direction == 'w':
+    elif input_direction == 'W' and x > 1 and coordinates != "(2,1)" and coordinates != "(3,2)":
         x -= 1
     else:
         print("Not a valid direction!")
-    return (x,y)
+    return '({},{})'.format(x,y)
+
     
 
-def tile_numbers(x):
-    if x == (1,1):
-        directions = print("You can travel: (N)orth")
-    elif x == (1,2):
-        directions = print("You can travel: (N)orth or (E)ast or (S)outh")
-    elif x == (1,3):
-        directions = print("You can travel: (E)ast or (S)outh")
-    elif x == (2,1):
-        directions = print("You can travel: (N)orth")
-    elif x == (2,2):
-        directions = print("You can travel: (E)ast or (S)outh or (W)est")
-    elif x == (2,3):
-        directions = print("You can travel: (E)ast or (W)est")
-    elif x == (3,1):
-        False
-    elif x == (3,2):
-        directions = print("You can travel: (N)orth or (S)outh")
-    elif x == (3,3):
-        directions = print("You can travel: (S)outh or (W)est")
+def tile_numbers(coordinates):
+    x = int(coordinates[1])
+    y = int(coordinates[3])
+    #Changes the string to int
 
-x = 1
-y = 1
+    if x == 1 and y == 1:
+        directions = print("You can travel: (N)orth.")
+    elif x == 1 and y == 2:
+        directions = print("You can travel: (N)orth or (E)ast or (S)outh.")
+    elif x == 1 and y == 3:
+        directions = print("You can travel: (E)ast or (S)outh.")
+    elif x == 2 and y == 1:
+        directions = print("You can travel: (N)orth.")
+    elif x == 2 and y == 2:
+        directions = print("You can travel: (S)outh or (W)est.")
+    elif x == 2 and y == 3:
+        directions = print("You can travel: (E)ast or (W)est.")
+    elif x == 3 and y == 2:
+        directions = print("You can travel: (N)orth or (S)outh.")
+    elif x == 3 and y == 3:
+        directions = print("You can travel: (S)outh or (W)est.")
 
-print("You can travel: (N)orth")
-while True:
-    coordinates = tile_directions(x,y)
+coordinates = '(1,1)'
+
+print("You can travel: (N)orth.")
+while coordinates != '(3,1)':
+    coordinates = tile_directions(coordinates)
     tiles = tile_numbers(coordinates)
-
 print("Victory!")
+
+
