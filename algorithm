@@ -1,0 +1,5 @@
+#1.Create a function for the coordinates which uses the user input
+#1a) Add to the value of x or y depending on the user input
+#2. Create another function to print where user can move 
+#3. Have this inside of a while loop
+#4. Stop running when the user is at these coordinates (3,1) and print out "victory"
